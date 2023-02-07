@@ -1,5 +1,0 @@
-digraph graph_2 {
-	label=SCN labelloc=top rankdir=TB size=8
-	node [shape=circle]
-	fontsize=14
-}
