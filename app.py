@@ -116,7 +116,7 @@ def create_graph(graph_num,firms_per_label, number_products, connect_vector, rad
     for edge in OG.edges:
         dot.edge(str(edge[0]),str(edge[1]))
     dot.attr(fontsize='14')
-    pdf = dot.render(filename = 'static/graph_' + str(graph_num),view=False,format='pdf')
+    pdf = dot.render(filename = '/static/graph_' + str(graph_num),view=False,format='pdf')
 
     return graph_dict, pdf
 
@@ -241,11 +241,11 @@ def get_values():
             graph_dict, pdfs = create_multiple_graphs(number_graphs, number_firms,
                                                       number_products, number_labels, radius, connect_vector,seed)
             ### Convert the dictionary to a json file
-            with open('static/graph_dict.json', 'w') as json_file:
+            with open('/static/graph_dict.json', 'w') as json_file:
                 json.dump(graph_dict, json_file)
             ### zip all data
-            files = pdfs + ['static/graph_dict.json']
-            zip_path = 'static/data.zip'
+            files = pdfs + ['/static/graph_dict.json']
+            zip_path = '/static/data.zip'
             zip_files(files, zip_path)
 
             ## Show the first Graph
@@ -279,7 +279,7 @@ def get_values():
 #### Path to download the data
 @app.route('/download')
 def download_file():
-    file_path = 'static/data.zip'
+    file_path = '/static/data.zip'
     return send_file(file_path, as_attachment=True)
 
 
